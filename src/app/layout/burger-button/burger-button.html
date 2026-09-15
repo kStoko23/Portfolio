@@ -1,0 +1,26 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 48 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  class="w-10 h-10 transition duration-500"
+>
+  <line
+    x1="2"
+    y1="4"
+    x2="48"
+    y2="4"
+    class="transition origin-center duration-500"
+    [class]="isOpen() ? 'translate-y-[5px] -translate-x-[5px] rotate-45' : ''"
+  />
+  <line
+    x1="2"
+    y1="20"
+    x2="48"
+    y2="20"
+    class="transition origin-center duration-500"
+    [class]="isOpen() ? '-translate-y-[5px] -translate-x-[5px] -rotate-45' : ''"
+  />
+</svg>

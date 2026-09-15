@@ -1,0 +1,16 @@
+<section id="skills" class="flex flex-col md:flex-row justify-center md:justify-between gap-10 sm:gap-16 lg:gap-20 px-6 sm:px-10 lg:px-14 py-16 lg:py-36">
+  <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">Skills</h2>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-10 lg:gap-x-12 gap-y-10 sm:gap-y-12">
+    @for (g of groups; track g.title) {
+      <div class="flex flex-col gap-6 sm:gap-8">
+        <h3 class="text-2xl lg:text-4xl font-semibold tracking-tight">{{ g.title }}</h3>
+        <ul class="flex flex-col gap-2 font-mono text-base sm:text-xl  text-[#8e8b86]">
+          @for (skill of g.skills; track skill) {
+            <li class="hover-flip" [attr.data-label]="skill" [attr.aria-label]="skill"></li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</section>

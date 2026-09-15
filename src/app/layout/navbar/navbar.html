@@ -1,0 +1,38 @@
+<header
+  class="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-6 border-b border-white/5 bg-[#0d0d0f]/60 backdrop-blur-md px-6 sm:px-10 lg:px-14 py-4 font-sans transition-transform duration-300"
+  [class.-translate-y-full]="hidden()"
+>
+  <a href="/" class="flex items-center gap-2.5 group">
+    <svg viewBox="-9.01 -31.15 183.69 41.79" class="h-8 w-auto text-white" role="img" aria-label="JST.DEV">
+      <g fill="currentColor">
+        <path d="M684 329V640H934V299Q934 242 908.5 187.5Q883 133 828.5 88.0Q774 43 688.5 16.5Q603 -10 484 -10Q401 -10 320.5 5.5Q240 21 175.0 56.0Q110 91 71.0 149.5Q32 208 31 294H271Q285 232 335.5 206.0Q386 180 484 180Q567 180 610.0 199.0Q653 218 668.5 252.0Q684 286 684 329Z" transform="translate(0.00,0.00) scale(0.032000,-0.032000)"/>
+        <path d="M35 235H308Q315 214 349.0 199.5Q383 185 440.5 177.5Q498 170 574 170Q649 170 692.5 174.5Q736 179 754.0 190.5Q772 202 772 222Q772 241 743.0 251.5Q714 262 640.0 266.0Q566 270 432 270Q332 270 259.5 279.5Q187 289 140.5 309.5Q94 330 72.0 361.5Q50 393 50 437Q50 513 101.5 562.5Q153 612 257.5 636.5Q362 661 519 661Q749 661 870.5 594.5Q992 528 992 403H733Q728 436 671.0 453.5Q614 471 509 471Q405 471 354.5 459.0Q304 447 304 418Q304 403 318.0 394.0Q332 385 366.5 379.5Q401 374 464.0 372.0Q527 370 624 370Q731 370 806.0 359.5Q881 349 927.5 328.0Q974 307 995.0 274.5Q1016 242 1016 198Q1016 122 968.0 74.0Q920 26 816.0 3.0Q712 -20 544 -20Q449 -20 369.5 -9.0Q290 2 228.0 23.5Q166 45 123.0 76.5Q80 108 57.5 147.5Q35 187 35 235Z" transform="translate(32.43,0.00) scale(0.032000,-0.032000)"/>
+        <path d="M30 640H1070V450H675V0H425V450H30Z" transform="translate(66.52,0.00) scale(0.032000,-0.032000)"/>
+      </g>
+      <circle cx="112.02" cy="0" r="3" class="fill-accent animate-pulse"/>
+      <g fill="currentColor">
+        <path d="M253 -10Q171 -10 120.5 47.0Q70 104 70 200V349Q70 446 120.0 503.0Q170 560 253 560Q321 560 361 522Q392 492 399 445H402L398 576V730H523V0H401V105H399Q392 58 361 29Q321 -10 253 -10ZM297 98Q345 98 371.5 126.5Q398 155 398 206V344Q398 395 371.5 423.5Q345 452 297.0 452.0Q249 452 222.0 424.0Q195 396 195 344V206Q195 154 222.0 126.0Q249 98 297 98Z" transform="translate(122.02,0.00) scale(0.024000,-0.024000)"/>
+        <path d="M301 -10Q231 -10 179.0 17.0Q127 44 98.5 92.5Q70 141 70 206V344Q70 409 98.5 457.5Q127 506 179.0 533.0Q231 560 301 560Q370 560 421.5 533.0Q473 506 501.5 457.5Q530 409 530 344V245H191V206Q191 148 219.0 118.5Q247 89 302 89Q344 89 370.0 103.5Q396 118 403 146H526Q512 75 450.5 32.5Q389 -10 301 -10ZM409 325V345Q409 402 382.0 432.5Q355 463 301.0 463.0Q247 463 219.0 432.0Q191 401 191 344V323Z" transform="translate(136.62,0.00) scale(0.024000,-0.024000)"/>
+        <path d="M220 0 39 550H167L272 216Q281 186 289.5 154.0Q298 122 302 103Q307 122 315.0 154.0Q323 186 331 215L434 550H561L381 0Z" transform="translate(151.22,0.00) scale(0.024000,-0.024000)"/>
+      </g>
+    </svg>
+  </a>
+
+  <div class="flex items-center gap-3 sm:gap-4 font-mono text-xs tracking-wide text-[#8e8b86]">
+    <span class="hidden sm:inline">WARSAW {{ warsawTime() }}</span>
+
+    <button
+      (click)="toggleMenu()"
+      [attr.aria-label]="isOpen() ? 'Close menu' : 'Open menu'"
+      class="relative -mr-2"
+    >
+      <app-burger-button [isOpen]="isOpen()" />
+    </button>
+  </div>
+</header>
+
+<div
+  class="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm transition duration-850"
+  [class]="isOpen() ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+></div>
+<app-nav-menu [isOpen]="isOpen()" (linkClick)="closeMenu()" />

@@ -1,0 +1,47 @@
+<section
+  id="projects"
+  #sectionEl
+  class="relative"
+  [style.height.dvh]="projects.length * 100"
+>
+  <div class="sticky top-0 h-dvh flex flex-col  gap-8 sm:gap-10 px-6 sm:px-10 lg:px-14 py-24">
+    <div class="flex items-end justify-between lg:mb-12">
+      <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">Selected work</h2>
+      <span class="font-mono text-sm sm:text-lg text-[#8e8b86]">
+        {{ projects[activeIndex()].num }}&nbsp;/&nbsp;{{ total }}
+      </span>
+    </div>
+
+    <div
+      class="flex-1 min-h-0 flex flex-col lg:flex-row gap-8 sm:gap-12 transition-opacity duration-100"
+      [style.opacity]="contentOpacity()"
+    >
+      <div class="flex flex-col gap-5 lg:flex-1 lg:justify-center">
+        <div class="flex items-center gap-4 font-mono text-xs sm:text-sm tracking-wide text-[#8e8b86]">
+          <span class="flex items-center gap-4">
+            @for (tag of projects[activeIndex()].tags; track tag; let last = $last) {
+              <span>{{ tag }}</span>
+              @if (!last) {
+                <span class="text-accent">·</span>
+              }
+            }
+          </span>
+        </div>
+        <h3 class="text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight">
+          {{ projects[activeIndex()].name }}
+        </h3>
+        <p class="max-w-lg text-base sm:text-lg lg:text-xl leading-relaxed text-[#c9c5bf]">
+          {{ projects[activeIndex()].description }}
+        </p>
+      </div>
+
+      <div
+        class="flex-1 w-full rounded-sm bg-gradient-to-br from-[#1c1c20] to-[#0d0d0f] flex items-center justify-center"
+      >
+        <span class="font-mono text-xs uppercase tracking-wide text-[#57565b]">
+          {{ projects[activeIndex()].mediaLabel }} — placeholder
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

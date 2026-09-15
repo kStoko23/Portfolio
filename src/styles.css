@@ -1,3 +1,168 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-accent: oklch(0.82 0.15 85);
+
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.3vw, 0.95rem);
+  --text-base: clamp(1rem, 0.9rem + 0.4vw, 1.1rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  --text-3xl: clamp(1.875rem, 1.6rem + 1.4vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 1.9rem + 2vw, 3rem);
+  --text-5xl: clamp(3rem, 2.4rem + 3vw, 4rem);
+  --text-6xl: clamp(3.75rem, 3rem + 4vw, 5rem);
+  --text-8xl: clamp(5.25rem, 10vw, 10rem);
+
+  --text-heading: clamp(2.25rem, 1.2rem + 4vw, 4.5rem);
+}
+
+:root {
+  --background: #0a0a0b;
+  --foreground: #f2f0ec;
+  --accent: var(--color-accent);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+*::selection {
+  color: black;
+  background: var(--accent);
+}
+*::-moz-selection {
+  color: black;
+  background: var(--accent);
+}
+*::-webkit-selection {
+  color: black;
+  background: var(--accent);
+}
+
+.animated {
+  @apply transition-all ease-in;
+}
+.animated__300 {
+  transition-duration: 0.3s;
+}
+.animated__500 {
+  transition-duration: 0.5s;
+}
+.animated__700 {
+  transition-duration: 0.7s;
+}
+.noise {
+  z-index: -10;
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('/assets/noise-bg.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: noise-animation 0.5s infinite;
+  opacity: 0.9;
+  visibility: visible;
+}
+
+@keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+.hover-flip {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  perspective: 300px;
+}
+
+.hover-flip::before,
+.hover-flip::after {
+  content: attr(data-label);
+  display: block;
+  backface-visibility: hidden;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.hover-flip::before {
+  transform: translateY(0) rotateX(0deg);
+}
+
+.hover-flip::after {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  color: var(--color-accent);
+  transform: translateY(-100%) rotateX(90deg);
+}
+
+.hover-flip:hover::before {
+  opacity: 0;
+  transform: translateY(100%) rotateX(-90deg);
+}
+
+.hover-flip:hover::after {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+}
