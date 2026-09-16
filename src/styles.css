@@ -45,18 +45,6 @@ body {
   background: var(--accent);
 }
 
-.animated {
-  @apply transition-all ease-in;
-}
-.animated__300 {
-  transition-duration: 0.3s;
-}
-.animated__500 {
-  transition-duration: 0.5s;
-}
-.animated__700 {
-  transition-duration: 0.7s;
-}
 .noise {
   z-index: -10;
   position: fixed;

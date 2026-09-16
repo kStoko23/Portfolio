@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DestroyRef, ElementRef, inject, viewChild } from '@angular/core';
+import { AfterViewInit, Component, DestroyRef, ElementRef, inject, signal, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cursor',
@@ -6,13 +6,22 @@ import { AfterViewInit, Component, DestroyRef, ElementRef, inject, viewChild } f
   template: `
     <div
       #cursorEl
-      class="hidden lg:block fixed top-0 left-0 z-50 pointer-events-none w-10 h-10 rounded-full border-3 border-current mix-blend-difference"
-    ></div>
+      class="hidden lg:flex fixed top-0 left-0 z-50 pointer-events-none items-center justify-center rounded-full mix-blend-difference transition-[width,height,background-color] duration-200 ease-out"
+      [class]="hovering() ? 'w-28 h-28 bg-white' : 'w-10 h-10 border-3 border-current'"
+    >
+      @if (hovering()) {
+        <span class="font-mono text-xs font-medium uppercase tracking-wide text-black">
+          Visit ↗
+        </span>
+      }
+    </div>
   `,
 })
 export class Cursor implements AfterViewInit {
   private readonly cursorEl = viewChild.required<ElementRef<HTMLDivElement>>('cursorEl');
   private readonly destroyRef = inject(DestroyRef);
+
+  readonly hovering = signal(false);
 
   private readonly mouse = { x: 0, y: 0 };
   private readonly pos = { x: 0, y: 0 };
@@ -23,8 +32,20 @@ export class Cursor implements AfterViewInit {
       this.mouse.x = e.clientX;
       this.mouse.y = e.clientY;
     };
+    const onMouseOver = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest?.('[data-cursor-visit]')) {
+        this.hovering.set(true);
+      }
+    };
+    const onMouseOut = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest?.('[data-cursor-visit]')) {
+        this.hovering.set(false);
+      }
+    };
 
     window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseover', onMouseOver);
+    window.addEventListener('mouseout', onMouseOut);
 
     const speed = 0.12;
     const el = this.cursorEl().nativeElement;
@@ -33,7 +54,7 @@ export class Cursor implements AfterViewInit {
       this.pos.x += (this.mouse.x - this.pos.x) * speed;
       this.pos.y += (this.mouse.y - this.pos.y) * speed;
 
-      el.style.transform = `translate3d(${this.pos.x - 20}px, ${this.pos.y - 20}px, 0)`;
+      el.style.transform = `translate3d(${this.pos.x}px, ${this.pos.y}px, 0) translate(-50%, -50%)`;
 
       this.rafId = requestAnimationFrame(animate);
     };
@@ -42,6 +63,8 @@ export class Cursor implements AfterViewInit {
 
     this.destroyRef.onDestroy(() => {
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseover', onMouseOver);
+      window.removeEventListener('mouseout', onMouseOut);
       cancelAnimationFrame(this.rafId);
     });
   }

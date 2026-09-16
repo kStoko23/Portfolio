@@ -14,6 +14,8 @@ interface Project {
   year: string;
   description: string;
   mediaLabel: string;
+  url: string;
+  image?: string;
 }
 
 @Component({
@@ -31,44 +33,57 @@ export class Projects {
   readonly projects: Project[] = [
     {
       num: '01',
-      name: 'Kanban for field crews',
-      tags: ['Angular', '.NET', 'SignalR'],
-      year: '2026',
+      name: 'Animalactin shop & brand site',
+      tags: ['WordPress', 'WooCommerce', 'ACF', 'Tailwind'],
+      year: '2025',
       description:
-        'Real-time job board replacing a 3,000-row spreadsheet for a logistics operator.',
-      mediaLabel: 'Dashboard shot',
+      'Storefront and companion brand site (animalactin.eu) for a pet supplement manufacturer, sharing one custom ACF block system across both.',
+      mediaLabel: 'Storefront preview',
+      url: 'https://animalactin.shop/',
+      image: '/assets/projects/animalactin.png',
     },
     {
       num: '02',
-      name: 'Insurance quote engine',
-      tags: ['.NET', 'Azure', 'SQL'],
-      year: '2025',
-      description: 'Rules engine and broker portal; quotes went from two days to ninety seconds.',
-      mediaLabel: 'Product shot',
+      name: 'Acha! product site',
+      tags: ['WordPress', 'ACF', 'Tailwind', 'Alpine.js'],
+      year: '2026',
+      description:
+        'Product landing page for a ready-to-drink green tea brand, built on a custom ACF block system for fast content updates.',
+      mediaLabel: 'Landing page preview',
+      url: 'https://achatea.pl/',
+      image: '/assets/projects/wosana.png',
     },
     {
       num: '03',
-      name: 'WooCommerce replatform',
-      tags: ['WordPress', 'WooCommerce'],
-      year: '2025',
-      description: 'Migrated 4k SKUs, rebuilt checkout, cut load time by more than half.',
-      mediaLabel: 'Storefront shot',
+      name: 'ONE House digital production',
+      tags: ['Statamic', 'PHP', 'Tailwind', 'Alpine.js'],
+      year: '2025–2026',
+      description:
+        'Service site for a digital production team inside a national marketing agency, presenting their process and case studies.',
+      mediaLabel: 'Agency site preview',
+      url: 'https://dp.one-house.pl/',
+      image: '/assets/projects/dp.png',
     },
     {
       num: '04',
-      name: 'Clinic booking system',
-      tags: ['Angular', 'C#', 'Stripe'],
-      year: '2024',
-      description: 'Multi-location scheduling with staff rotas and automated reminders.',
-      mediaLabel: 'Mobile shot',
+      name: 'Fruitfarm',
+      tags: ['Next.js', 'Tailwind', 'Figma'],
+      year: '2025',
+      description:
+        'Bilingual site for a fruit exporter, presenting certifications and export capacity to wholesale buyers across Europe and Asia.',
+      mediaLabel: 'Export site preview',
+      url: 'https://www.fruitfarm.com.pl/en',
+      image: '/assets/projects/fruitfarm.png',
     },
     {
       num: '05',
-      name: 'Design-to-code system',
-      tags: ['Figma', 'TypeScript', 'CSS'],
-      year: '2024',
-      description: "A component library two teams still build every new screen from.",
-      mediaLabel: 'Component shot',
+      name: 'BookFlix',
+      tags: ['Angular', '.NET', 'PostgreSQL', 'Docker'],
+      year: '2026',
+      description:
+        'A Netflix-styled personal library app proving out fullstack range beyond WordPress — JWT auth, a tested REST API, fully Dockerized.',
+      mediaLabel: 'App preview',
+      url: 'https://github.com/kstoko23/bookflix',
     },
   ];
 

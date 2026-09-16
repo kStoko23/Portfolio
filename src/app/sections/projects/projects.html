@@ -35,13 +35,39 @@
         </p>
       </div>
 
-      <div
-        class="flex-1 w-full rounded-sm bg-gradient-to-br from-[#1c1c20] to-[#0d0d0f] flex items-center justify-center"
-      >
-        <span class="font-mono text-xs uppercase tracking-wide text-[#57565b]">
-          {{ projects[activeIndex()].mediaLabel }} — placeholder
-        </span>
-      </div>
+      @if (projects[activeIndex()].image; as img) {
+        <a
+          data-cursor-visit
+          [href]="projects[activeIndex()].url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col flex-1 min-h-0 w-full h-full rounded-sm overflow-hidden border border-white/10 bg-[#111113]"
+        >
+          <div class="flex items-center gap-1.5 px-3 py-2.5 border-b border-white/10 shrink-0">
+            <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
+          </div>
+          <div class="flex-1 min-h-0 overflow-hidden">
+            <img
+              [src]="img"
+              [alt]="projects[activeIndex()].mediaLabel"
+              class="block w-full h-full object-cover object-top"
+            />
+          </div>
+        </a>
+      } @else {
+        <a
+          data-cursor-visit
+          [href]="projects[activeIndex()].url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center justify-center gap-4 flex-1 min-h-0 w-full h-full rounded-sm border border-dashed border-white/15 bg-[#111113] px-6 text-center font-mono text-sm text-[#8e8b86]"
+        >
+          <span>No live deploy — source only</span>
+          <span class="text-accent">View repository ↗</span>
+        </a>
+      }
     </div>
   </div>
 </section>

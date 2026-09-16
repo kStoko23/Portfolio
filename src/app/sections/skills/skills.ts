@@ -14,20 +14,51 @@ interface SkillGroup {
 export class Skills {
   readonly groups: SkillGroup[] = [
     {
-      title: 'Frontend',
-      skills: ['Angular', 'TypeScript', 'JavaScript', 'HTML & CSS'],
+      title: 'Languages & Tools',
+      skills: [
+        'TypeScript',
+        'JavaScript',
+        'C#',
+        'PHP',
+        'PostgreSQL',
+        'HTML & CSS',
+        'Git',
+        'Docker',
+        'Nginx',
+        'GitHub Actions',
+        'Linux',
+        'Bash',
+        'Figma',
+      ],
     },
     {
-      title: 'Backend',
-      skills: ['.NET', 'C#', 'SQL', 'REST APIs'],
+      title: 'Frameworks & Libraries',
+      skills: [
+        'Angular',
+        '.NET',
+        'Entity Framework',
+        'XUnit',
+        'Tailwind CSS',
+        'Alpine.js',
+        'Next.js',
+        'GSAP',
+        'WordPress',
+        'WooCommerce',
+        'ACF',
+        'Statamic',
+      ],
     },
     {
-      title: 'Platform',
-      skills: ['WordPress', 'WooCommerce'],
-    },
-    {
-      title: 'Design',
-      skills: ['Figma'],
+      title: 'Core CS Concepts',
+      skills: [
+        'Data Structures & Algorithms',
+        'Databases',
+        'OOP',
+        'Operating Systems',
+        'System Design',
+        'REST API Design',
+        'JWT Authentication',
+      ],
     },
   ];
 }
