@@ -41,7 +41,7 @@ export class Projects {
       'Storefront and companion brand site (animalactin.eu) for a pet supplement manufacturer, sharing one custom ACF block system across both.',
       mediaLabel: 'Storefront preview',
       url: 'https://animalactin.shop/',
-      image: '/assets/projects/animalactin.png',
+      image: '/assets/projects/animalactin.webp',
       agency: true,
     },
     {
@@ -53,7 +53,7 @@ export class Projects {
         'Product landing page for a ready-to-drink green tea brand, built on a custom ACF block system for fast content updates.',
       mediaLabel: 'Landing page preview',
       url: 'https://achatea.pl/',
-      image: '/assets/projects/wosana.png',
+      image: '/assets/projects/wosana.webp',
       agency: true,
     },
     {
@@ -65,7 +65,7 @@ export class Projects {
         'Service site for a digital production team inside a national marketing agency, presenting their process and case studies.',
       mediaLabel: 'Agency site preview',
       url: 'https://dp.one-house.pl/',
-      image: '/assets/projects/dp.png',
+      image: '/assets/projects/dp.webp',
       agency: true,
     },
     {
@@ -77,7 +77,7 @@ export class Projects {
         'Bilingual site for a fruit exporter, presenting certifications and export capacity to wholesale buyers across Europe and Asia.',
       mediaLabel: 'Export site preview',
       url: 'https://www.fruitfarm.com.pl/en',
-      image: '/assets/projects/fruitfarm.png',
+      image: '/assets/projects/fruitfarm.webp',
     },
     {
       num: '05',
@@ -88,7 +88,7 @@ export class Projects {
         'A Netflix-styled personal library app proving out fullstack range beyond WordPress — JWT auth, a tested REST API, fully Dockerized.',
       mediaLabel: 'App preview',
       url: 'https://github.com/kstoko23/bookflix',
-      image: '/assets/projects/bookflix.png',
+      image: '/assets/projects/bookflix.webp',
     },
   ];
 
