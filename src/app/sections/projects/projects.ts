@@ -88,6 +88,7 @@ export class Projects {
         'A Netflix-styled personal library app proving out fullstack range beyond WordPress — JWT auth, a tested REST API, fully Dockerized.',
       mediaLabel: 'App preview',
       url: 'https://github.com/kstoko23/bookflix',
+      image: '/assets/projects/bookflix.png',
     },
   ];
 
