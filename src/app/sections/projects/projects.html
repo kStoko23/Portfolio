@@ -33,6 +33,11 @@
         <p class="max-w-lg text-base sm:text-lg lg:text-xl leading-relaxed text-[#c9c5bf]">
           {{ projects[activeIndex()].description }}
         </p>
+        @if (projects[activeIndex()].agency) {
+          <p class="max-w-lg font-mono text-xs sm:text-sm text-[#8e8b86]">
+            Built as a developer at <span class="text-accent">ONE House</span> — design and creative direction were handled by the agency's team.
+          </p>
+        }
       </div>
 
       @if (projects[activeIndex()].image; as img) {
@@ -41,19 +46,28 @@
           [href]="projects[activeIndex()].url"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-col flex-1 min-h-0 w-full h-full rounded-sm overflow-hidden border border-white/10 bg-[#111113]"
+          class="flex flex-col flex-1 min-h-0 w-full h-full rounded-lg overflow-hidden border border-white/10 bg-[#111113]"
         >
           <div class="flex items-center gap-1.5 px-3 py-2.5 border-b border-white/10 shrink-0">
             <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
             <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
             <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
           </div>
-          <div class="flex-1 min-h-0 overflow-hidden">
+          <div class="flex-1 min-h-0 overflow-hidden relative">
             <img
               [src]="img"
               [alt]="projects[activeIndex()].mediaLabel"
               class="block w-full h-full object-cover object-top"
             />
+            @if (projects[activeIndex()].agency) {
+              <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 flex items-center rounded-sm bg-black/70 px-2.5 py-2 backdrop-blur-sm">
+                <img
+                  src="/assets/oh_logo.svg"
+                  alt="Built at ONE House"
+                  class="h-4 sm:h-6 w-auto"
+                />
+              </div>
+            }
           </div>
         </a>
       } @else {

@@ -16,6 +16,7 @@ interface Project {
   mediaLabel: string;
   url: string;
   image?: string;
+  agency?: boolean;
 }
 
 @Component({
@@ -41,6 +42,7 @@ export class Projects {
       mediaLabel: 'Storefront preview',
       url: 'https://animalactin.shop/',
       image: '/assets/projects/animalactin.png',
+      agency: true,
     },
     {
       num: '02',
@@ -52,6 +54,7 @@ export class Projects {
       mediaLabel: 'Landing page preview',
       url: 'https://achatea.pl/',
       image: '/assets/projects/wosana.png',
+      agency: true,
     },
     {
       num: '03',
@@ -63,6 +66,7 @@ export class Projects {
       mediaLabel: 'Agency site preview',
       url: 'https://dp.one-house.pl/',
       image: '/assets/projects/dp.png',
+      agency: true,
     },
     {
       num: '04',
