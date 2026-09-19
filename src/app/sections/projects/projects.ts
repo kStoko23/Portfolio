@@ -16,6 +16,7 @@ interface Project {
   mediaLabel: string;
   url: string;
   image?: string;
+  imageMobile?: string;
   agency?: boolean;
 }
 
@@ -42,6 +43,7 @@ export class Projects {
       mediaLabel: 'Storefront preview',
       url: 'https://animalactin.shop/',
       image: '/assets/projects/animalactin.webp',
+      imageMobile: '/assets/projects/animalactin_mobile.webp',
       agency: true,
     },
     {
@@ -54,6 +56,7 @@ export class Projects {
       mediaLabel: 'Landing page preview',
       url: 'https://achatea.pl/',
       image: '/assets/projects/wosana.webp',
+      imageMobile: '/assets/projects/wosana_mobile.webp',
       agency: true,
     },
     {
@@ -66,6 +69,7 @@ export class Projects {
       mediaLabel: 'Agency site preview',
       url: 'https://dp.one-house.pl/',
       image: '/assets/projects/dp.webp',
+      imageMobile: '/assets/projects/dp_mobile.webp',
       agency: true,
     },
     {
@@ -78,6 +82,7 @@ export class Projects {
       mediaLabel: 'Export site preview',
       url: 'https://www.fruitfarm.com.pl/en',
       image: '/assets/projects/fruitfarm.webp',
+      imageMobile: '/assets/projects/fruitfarm_mobile.webp',
     },
     {
       num: '05',
@@ -89,6 +94,7 @@ export class Projects {
       mediaLabel: 'App preview',
       url: 'https://github.com/kstoko23/bookflix',
       image: '/assets/projects/bookflix.webp',
+      imageMobile: '/assets/projects/bookflix_mobile.webp',
     },
   ];
 
