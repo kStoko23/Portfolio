@@ -174,7 +174,7 @@ export const translations: Record<Lang, Translations> = {
   pl: {
     nav: {
       work: 'Projekty',
-      skills: 'Umiejętności',
+      skills: 'Skille',
       about: 'O mnie',
       contact: 'Kontakt',
     },
@@ -232,7 +232,7 @@ export const translations: Record<Lang, Translations> = {
       },
     },
     skills: {
-      heading: 'Umiejętności',
+      heading: 'Skille',
       groupTitles: {
         tools: 'Języki i narzędzia',
         frameworks: 'Frameworki i biblioteki',
