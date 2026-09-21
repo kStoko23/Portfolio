@@ -2,13 +2,13 @@
 <section
   #sectionEl
   class="relative hidden lg:block"
-  [style.height.dvh]="projects.length * 100"
+  [style.height.dvh]="projectCount * 100"
 >
   <div class="sticky top-0 h-dvh flex flex-col  gap-8 sm:gap-10 px-6 sm:px-10 lg:px-14 py-24">
     <div class="flex items-end justify-between lg:mb-12">
-      <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">Selected work</h2>
+      <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">{{ i18n.t().projects.heading }}</h2>
       <span class="font-mono text-sm sm:text-lg text-[#8e8b86]">
-        {{ projects[activeIndex()].num }}&nbsp;/&nbsp;{{ total }}
+        {{ projects()[activeIndex()].num }}&nbsp;/&nbsp;{{ total }}
       </span>
     </div>
 
@@ -19,7 +19,7 @@
       <div class="flex flex-col gap-5 lg:flex-1 lg:justify-center">
         <div class="flex items-center gap-4 font-mono text-xs sm:text-sm tracking-wide text-[#8e8b86]">
           <span class="flex items-center gap-4">
-            @for (tag of projects[activeIndex()].tags; track tag; let last = $last) {
+            @for (tag of projects()[activeIndex()].tags; track tag; let last = $last) {
               <span>{{ tag }}</span>
               @if (!last) {
                 <span class="text-accent">·</span>
@@ -28,22 +28,22 @@
           </span>
         </div>
         <h3 class="text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight">
-          {{ projects[activeIndex()].name }}
+          {{ projects()[activeIndex()].name }}
         </h3>
         <p class="max-w-lg text-base sm:text-lg lg:text-xl leading-relaxed text-[#c9c5bf]">
-          {{ projects[activeIndex()].description }}
+          {{ projects()[activeIndex()].description }}
         </p>
-        @if (projects[activeIndex()].agency) {
+        @if (projects()[activeIndex()].agency) {
           <p class="max-w-lg font-mono text-xs sm:text-sm text-[#8e8b86]">
-            Built as a developer at <span class="text-accent">ONE House</span> — design and creative direction were handled by the agency's team.
+            {{ i18n.t().projects.agencyNotePrefix }}<span class="text-accent">ONE House</span>{{ i18n.t().projects.agencyNoteSuffix }}
           </p>
         }
       </div>
 
-      @if (projects[activeIndex()].image; as img) {
+      @if (projects()[activeIndex()].image; as img) {
         <a
           data-cursor-visit
-          [href]="projects[activeIndex()].url"
+          [href]="projects()[activeIndex()].url"
           target="_blank"
           rel="noopener noreferrer"
           class="flex flex-col flex-1 min-h-0 w-full h-full rounded-lg overflow-hidden border border-white/10 bg-[#111113]"
@@ -56,14 +56,14 @@
           <div class="flex-1 min-h-0 overflow-hidden relative">
             <img
               [src]="img"
-              [alt]="projects[activeIndex()].mediaLabel"
+              [alt]="projects()[activeIndex()].mediaLabel"
               class="block w-full h-full object-cover object-top"
             />
-            @if (projects[activeIndex()].agency) {
+            @if (projects()[activeIndex()].agency) {
               <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 flex items-center rounded-sm bg-black/70 px-2.5 py-2 backdrop-blur-sm">
                 <img
                   src="/assets/oh_logo.svg"
-                  alt="Built at ONE House"
+                  [alt]="i18n.t().projects.builtBadge"
                   class="h-4 sm:h-6 w-auto"
                 />
               </div>
@@ -76,9 +76,9 @@
 </section>
 
 <div class="flex flex-col gap-28 lg:hidden px-6 sm:px-10 py-16 sm:py-20">
-  <h2 class="text-5xl font-medium tracking-tight">Selected work</h2>
+  <h2 class="text-5xl font-medium tracking-tight">{{ i18n.t().projects.heading }}</h2>
 
-  @for (project of projects; track project.name) {
+  @for (project of projects(); track project.key) {
     <div class="flex flex-col gap-5">
       <div class="flex flex-wrap items-center gap-3 font-mono text-xs tracking-wide text-[#8e8b86]">
         <span class="text-accent">{{ project.num }}</span>
@@ -91,7 +91,7 @@
       <p class="text-base leading-relaxed text-[#c9c5bf]">{{ project.description }}</p>
       @if (project.agency) {
         <p class="font-mono text-xs text-[#8e8b86]">
-          Built as a developer at <span class="text-accent">ONE House</span> — design and creative direction were handled by the agency's team.
+          {{ i18n.t().projects.agencyNotePrefix }}<span class="text-accent">ONE House</span>{{ i18n.t().projects.agencyNoteSuffix }}
         </p>
       }
 
@@ -115,13 +115,13 @@
               class="block w-auto h-auto max-w-full max-h-[900px] object-contain"
             />
             <div class="absolute bottom-3 left-3 z-20 flex items-center gap-1.5 rounded-sm bg-black/70 px-2.5 py-1.5 backdrop-blur-sm">
-              <span class="font-mono text-sm uppercase tracking-wide text-white">Visit ↗</span>
+              <span class="font-mono text-sm uppercase tracking-wide text-white">{{ i18n.t().projects.visit }}</span>
             </div>
             @if (project.agency) {
               <div class="absolute bottom-3 right-3 z-20 flex items-center rounded-sm bg-black/70 px-2.5 py-2 backdrop-blur-sm">
                 <img
                   src="/assets/oh_logo.svg"
-                  alt="Built at ONE House"
+                  [alt]="i18n.t().projects.builtBadge"
                   class="h-4 w-auto"
                 />
               </div>

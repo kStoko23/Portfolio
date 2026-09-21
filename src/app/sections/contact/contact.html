@@ -2,11 +2,10 @@
   id="contact"
   class="px-6 sm:px-10 lg:px-14 py-16 lg:py-36 flex flex-col justify-center gap-10 sm:gap-16 lg:gap-20"
 >
-  <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">Contact</h2>
+  <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">{{ i18n.t().contact.heading }}</h2>
   <div class="flex flex-col gap-7">
     <p class="max-w-4xl text-base sm:text-xl leading-relaxed text-[#c9c5bf]">
-      Got something half-formed? That's fine - I like the early conversations best. <br>Tell me what
-      you're trying to build.
+      {{ i18n.t().contact.intro }}
     </p>
     <a
       href="mailto:j.stokowskii23@gmail.com?subject=Let's%20talk"
@@ -31,6 +30,6 @@
         aria-label="CV (PDF)"
       ></a>
     </div>
-    <span class="text-[#57565b]">© 2026 JST.DEV — Warsaw</span>
+    <span class="text-[#57565b]">{{ i18n.t().contact.copyright }}</span>
   </div>
 </section>

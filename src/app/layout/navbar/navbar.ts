@@ -1,15 +1,18 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { BurgerButton } from '../burger-button/burger-button';
 import { NavMenu } from '../nav-menu/nav-menu';
+import { LanguageSwitcher } from '../language-switcher/language-switcher';
+import { LanguageService } from '../../shared/i18n/language';
 
 @Component({
   selector: 'app-navbar',
-  imports: [BurgerButton, NavMenu],
+  imports: [BurgerButton, NavMenu, LanguageSwitcher],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar {
   private readonly destroyRef = inject(DestroyRef);
+  protected readonly i18n = inject(LanguageService);
 
   private static readonly HIDE_THRESHOLD_PX = 80;
 

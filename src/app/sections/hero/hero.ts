@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { LanguageService } from '../../shared/i18n/language';
 
 @Component({
   selector: 'app-hero',
@@ -7,6 +8,8 @@ import { Component, signal } from '@angular/core';
   styleUrl: './hero.css',
 })
 export class Hero {
+  protected readonly i18n = inject(LanguageService);
+
   readonly ctaFillX = signal(0);
   readonly ctaFillY = signal(0);
 

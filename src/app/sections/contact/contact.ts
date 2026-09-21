@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { LanguageService } from '../../shared/i18n/language';
 
 @Component({
   selector: 'app-contact',
@@ -7,6 +8,8 @@ import { Component, signal } from '@angular/core';
   styleUrl: './contact.css',
 })
 export class Contact {
+  protected readonly i18n = inject(LanguageService);
+
   readonly email = 'j.stokowskii23@gmail.com';
   readonly statusText = 'Available for work';
   readonly copied = signal(false);

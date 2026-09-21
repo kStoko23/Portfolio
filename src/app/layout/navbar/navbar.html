@@ -23,14 +23,16 @@
       <span
         class="w-[7px] h-[7px] rounded-full bg-accent shadow-[0_0_0_4px_oklch(0.82_0.15_85_/_0.18)]"
       ></span>
-      <span>Available for work</span>
+      <span>{{ i18n.t().navbar.availableForWork }}</span>
     </div>
 
-    <span class="hidden sm:inline">WARSAW {{ warsawTime() }}</span>
+    <span class="hidden sm:inline">{{ i18n.t().navbar.warsaw }} {{ warsawTime() }}</span>
+
+    <app-language-switcher />
 
     <button
       (click)="toggleMenu()"
-      [attr.aria-label]="isOpen() ? 'Close menu' : 'Open menu'"
+      [attr.aria-label]="isOpen() ? i18n.t().navbar.closeMenu : i18n.t().navbar.openMenu"
       class="relative -mr-2"
     >
       <app-burger-button [isOpen]="isOpen()" />

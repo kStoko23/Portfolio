@@ -4,12 +4,12 @@
 >
   <div class="flex-1 flex flex-col justify-center gap-[5vw] sm:gap-20 px-6 sm:px-10 lg:px-14">
     <p class="text-center font-mono uppercase tracking-[0.15em] text-lg sm:text-2xl lg:text-3xl text-accent">
-      Fullstack Web Developer
+      {{ i18n.t().hero.kicker }}
     </p>
 
     <!-- J. Stokowski -->
     <h1 class="block w-full">
-    <span class="sr-only">Jakub Stokowski — Fullstack Web Developer</span>
+    <span class="sr-only">{{ i18n.t().hero.srName }}</span>
     <svg
       viewBox="0 0 848 91"
       preserveAspectRatio="xMidYMid meet"
@@ -58,7 +58,7 @@
     class="px-6 sm:px-10 lg:px-14 pt-8 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between"
   >
     <p class="max-w-xl text-base sm:text-xl leading-relaxed text-[#c9c5bf] text-center md:text-start">
-      I'm Jakub, I build websites and online stores for local businesses. No agency or middlemen — just me, your company and satisfying results.
+      {{ i18n.t().hero.description }}
     </p>
     <div class="flex flex-col gap-4 sm:flex-row items-center sm:gap-10 text-base sm:text-lg">
         <a
@@ -72,13 +72,13 @@
             [style.left.px]="ctaFillX()"
             [style.top.px]="ctaFillY()"
           ></span>
-          <span class="relative">Start a project ↗</span>
+          <span class="relative">{{ i18n.t().hero.cta }}</span>
         </a>
         <a
           href="#projects"
           class="hover-flip border-b border-[#3a3a3f] pb-1 font-mono uppercase tracking-wide text-[#8e8b86] transition-colors duration-200 hover:border-accent"
-          data-label="See the work"
-          aria-label="See the work"
+          [attr.data-label]="i18n.t().hero.seeWork"
+          [attr.aria-label]="i18n.t().hero.seeWork"
         ></a>
     </div>
   </div>

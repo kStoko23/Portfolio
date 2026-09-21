@@ -2,45 +2,38 @@
   id="about"
   class="px-6 sm:px-10 lg:px-14 py-16 lg:py-36 flex flex-col gap-10 sm:gap-16 lg:gap-20"
 >
-  <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">About me</h2>
+  <h2 class="text-5xl lg:text-8xl font-medium tracking-tight">{{ i18n.t().about.heading }}</h2>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
     <div class="flex flex-col gap-10 max-w-4xl">
       <div class="flex flex-col gap-6 text-lg sm:text-xl leading-relaxed text-[#c9c5bf]">
-        <p>
-          I'm a web developer who builds landing pages and online stores for local businesses —
-          mostly WordPress and WooCommerce, because for what most small businesses actually need, it
-          just works. I'd rather ask an awkward question early than ship the wrong thing politely.
-        </p>
-        <p>
-          Outside client work, I build personal projects in Angular and .NET, mostly to stay sharp
-          on the fundamentals. Build it, make it work, make it fast. That's how things are.
-        </p>
+        <p>{{ i18n.t().about.bio1 }}</p>
+        <p>{{ i18n.t().about.bio2 }}</p>
       </div>
 
       <div class="flex flex-col font-mono text-sm tracking-wide">
         <div class="flex items-center justify-between gap-4 border-t border-white/10 py-5">
-          <span class="uppercase text-[#8e8b86]">Based in</span>
-          <span class="font-semibold">Warsaw, PL</span>
+          <span class="uppercase text-[#8e8b86]">{{ i18n.t().about.stats.basedInLabel }}</span>
+          <span class="font-semibold">{{ i18n.t().about.stats.basedInValue }}</span>
         </div>
         <div class="flex items-center justify-between gap-4 border-t border-white/10 py-5">
-          <span class="uppercase text-[#8e8b86]">Experience</span>
-          <span class="font-semibold">+2 years</span>
+          <span class="uppercase text-[#8e8b86]">{{ i18n.t().about.stats.experienceLabel }}</span>
+          <span class="font-semibold">{{ i18n.t().about.stats.experienceValue }}</span>
         </div>
         <div class="flex items-center justify-between gap-4 border-t border-white/10 py-5">
-          <span class="uppercase text-[#8e8b86]">Working</span>
-          <span class="font-semibold">Remote / hybrid</span>
+          <span class="uppercase text-[#8e8b86]">{{ i18n.t().about.stats.workingLabel }}</span>
+          <span class="font-semibold">{{ i18n.t().about.stats.workingValue }}</span>
         </div>
         <div class="flex items-center justify-between gap-4 border-t border-b border-white/10 py-5">
-          <span class="uppercase text-[#8e8b86]">Languages</span>
-          <span class="font-semibold">PL · EN</span>
+          <span class="uppercase text-[#8e8b86]">{{ i18n.t().about.stats.languagesLabel }}</span>
+          <span class="font-semibold">{{ i18n.t().about.stats.languagesValue }}</span>
         </div>
       </div>
     </div>
 
     <img
       src="/assets/me.webp"
-      alt="Portrait of Jakub Stokowski"
+      [alt]="i18n.t().about.portraitAlt"
       class="block h-[min(55vh,700px)] w-auto aspect-[3/4] shrink-0 justify-self-center rounded-lg object-cover lg:grayscale hover:grayscale-0 hover:scale-110 transition duration-500"
     />
   </div>

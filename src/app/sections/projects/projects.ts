@@ -2,22 +2,30 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  computed,
   inject,
   signal,
   viewChild,
 } from '@angular/core';
+import { LanguageService } from '../../shared/i18n/language';
 
-interface Project {
+type ProjectKey = 'animalactin' | 'wosana' | 'dp' | 'fruitfarm' | 'bookflix';
+
+interface RawProject {
+  key: ProjectKey;
   num: string;
-  name: string;
   tags: string[];
   year: string;
-  description: string;
-  mediaLabel: string;
   url: string;
   image?: string;
   imageMobile?: string;
   agency?: boolean;
+}
+
+interface Project extends RawProject {
+  name: string;
+  description: string;
+  mediaLabel: string;
 }
 
 @Component({
@@ -29,76 +37,72 @@ interface Project {
 export class Projects {
   private readonly destroyRef = inject(DestroyRef);
   private readonly sectionEl = viewChild.required<ElementRef<HTMLElement>>('sectionEl');
+  protected readonly i18n = inject(LanguageService);
 
   private ticking = false;
 
-  readonly projects: Project[] = [
+  private readonly rawProjects: RawProject[] = [
     {
+      key: 'animalactin',
       num: '01',
-      name: 'Animalactin shop & brand site',
       tags: ['WordPress', 'WooCommerce', 'ACF', 'Tailwind'],
       year: '2025',
-      description:
-      'Storefront and companion brand site (animalactin.eu) for a pet supplement manufacturer, sharing one custom ACF block system across both.',
-      mediaLabel: 'Storefront preview',
       url: 'https://animalactin.shop/',
       image: '/assets/projects/animalactin.webp',
       imageMobile: '/assets/projects/animalactin_mobile.webp',
       agency: true,
     },
     {
+      key: 'wosana',
       num: '02',
-      name: 'Acha! product site',
       tags: ['WordPress', 'ACF', 'Tailwind', 'Alpine.js'],
       year: '2026',
-      description:
-        'Product landing page for a ready-to-drink green tea brand, built on a custom ACF block system for fast content updates.',
-      mediaLabel: 'Landing page preview',
       url: 'https://achatea.pl/',
       image: '/assets/projects/wosana.webp',
       imageMobile: '/assets/projects/wosana_mobile.webp',
       agency: true,
     },
     {
+      key: 'dp',
       num: '03',
-      name: 'ONE House digital production',
       tags: ['Statamic', 'PHP', 'Tailwind', 'Alpine.js'],
       year: '2025–2026',
-      description:
-        'Service site for a digital production team inside a national marketing agency, presenting their process and case studies.',
-      mediaLabel: 'Agency site preview',
       url: 'https://dp.one-house.pl/',
       image: '/assets/projects/dp.webp',
       imageMobile: '/assets/projects/dp_mobile.webp',
       agency: true,
     },
     {
+      key: 'fruitfarm',
       num: '04',
-      name: 'Fruitfarm',
       tags: ['Next.js', 'Tailwind', 'Figma'],
       year: '2025',
-      description:
-        'Bilingual site for a fruit exporter, presenting certifications and export capacity to wholesale buyers across Europe and Asia.',
-      mediaLabel: 'Export site preview',
       url: 'https://www.fruitfarm.com.pl/en',
       image: '/assets/projects/fruitfarm.webp',
       imageMobile: '/assets/projects/fruitfarm_mobile.webp',
     },
     {
+      key: 'bookflix',
       num: '05',
-      name: 'BookFlix',
       tags: ['Angular', '.NET', 'PostgreSQL', 'Docker'],
       year: '2026',
-      description:
-        'A Netflix-styled personal library app proving out fullstack range beyond WordPress — JWT auth, a tested REST API, fully Dockerized.',
-      mediaLabel: 'App preview',
       url: 'https://github.com/kstoko23/bookflix',
       image: '/assets/projects/bookflix.webp',
       imageMobile: '/assets/projects/bookflix_mobile.webp',
     },
   ];
 
-  readonly total = this.projects.length.toString().padStart(2, '0');
+  readonly projectCount = this.rawProjects.length;
+  readonly total = this.projectCount.toString().padStart(2, '0');
+
+  readonly projects = computed<Project[]>(() => {
+    const items = this.i18n.t().projects.items;
+    return this.rawProjects.map((project) => ({
+      ...project,
+      ...items[project.key],
+    }));
+  });
+
   readonly activeIndex = signal(0);
   readonly contentOpacity = signal(1);
 
@@ -127,7 +131,7 @@ export class Projects {
     }
 
     const progressed = Math.min(Math.max(-rect.top, 0), pinnable);
-    const sliceCount = this.projects.length;
+    const sliceCount = this.projectCount;
     const slice = pinnable / sliceCount;
     const index = Math.min(sliceCount - 1, Math.floor(progressed / slice));
     const localProgress = (progressed - index * slice) / slice;

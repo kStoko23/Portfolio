@@ -1,4 +1,5 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
+import { LanguageService } from '../../shared/i18n/language';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +8,8 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './nav-menu.css',
 })
 export class NavMenu {
+  protected readonly i18n = inject(LanguageService);
+
   readonly isOpen = input(false);
   readonly linkClick = output<void>();
 }
